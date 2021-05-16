@@ -1,0 +1,107 @@
+/* Buat CSS disini, aing ngga ngerti jadi asal copas2 wae yang ada di Figma wkwkwkwkwk */
+
+
+/* Ini font cuma buat iseng2 coba2 wae :V */
+h1 {
+    font-family: 'Roboto', 'Indie Flower', arial;
+    color: red;
+}
+
+/* Rectangle 10 */
+
+
+/* position: absolute;
+width: 1920px;
+height: 1080px;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(111.98deg, #FF9966 2.48%, #FF5E62 97.57%); */
+
+
+/* Rekening3 */
+
+
+/* position: absolute;
+width: 362px;
+height: 125px;
+left: 876px;
+top: 98px; */
+
+
+
+/* Rekening2 */
+
+
+/* position: absolute;
+width: 362px;
+height: 125px;
+left: 496px;
+top: 98px; */
+
+
+
+/* Rekening1 */
+
+
+/* position: absolute;
+width: 362px;
+height: 125px;
+left: 116px;
+top: 98px; */
+
+
+
+/* Transaction */
+
+#transaction_table{
+    position: absolute;
+    width: 1773px;
+    height: 729px;
+    left: 73px;
+    top: 259px;
+}
+
+
+
+
+/* Add Transaction */
+
+#add_trans{
+    position: absolute;
+    width: 192px;
+    height: 47px;
+    left: 1666px;
+    top: 200px;
+
+    /* background: rgba(255, 255, 255, 0.25);
+    border: 2px solid rgba(225, 225, 225, 0.42);
+    box-sizing: border-box;
+    backdrop-filter: blur(100px); */
+    /* Note: backdrop-filter has minimal browser support */
+
+    /* border-radius: 20px; */
+}
+
+
+
+
+/* Add Transaction */
+
+
+/* position: absolute;
+width: 192px;
+height: 47px;
+left: 1666px;
+top: 140px; */
+
+
+
+/* Add Transaction */
+
+
+/* position: absolute;
+width: 192px;
+height: 47px;
+left: 1666px;
+top: 80px; */ 
