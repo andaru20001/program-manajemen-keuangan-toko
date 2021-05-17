@@ -1,4 +1,22 @@
 <!-- Buat view tampilan halaman Home -->
+<body>
+    <section class="main">
+        <div class="top">
+            <div class="rek-card">
+                <div class="rek-photo">
+                    <img src="../../src/" class="rek-profile">
+                </div>
+                <div class="rek-teks">
+                    <h2>Jenius</h2>
+                    <h3>Rp 2.000.000</h3>
+                </div>
+            </div>
+        </div>
+        <div class="trans-table">
+            
+        </div>
+    </section>
+</body>
 
 <?php echo $this->extend('template'); ?>
 

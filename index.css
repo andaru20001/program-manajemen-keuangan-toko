@@ -1,0 +1,84 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(111.98deg, #FF9966 2.48%, #FF5E62 97.57%) !important;
+}
+.main {
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 5%;
+}
+.rek-card {
+    display: flex;
+    padding: 15px;
+    background: #FFFFFF40;
+    width: 250px;
+    height: 80px;
+    border-radius: 15px;
+    border: 2px solid rgba(225, 225, 225, 0.75);
+    margin-left: 20px;
+    backdrop-filter: blur(4px);
+}
+.list-button{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    justify-content: space-between;
+    width: 150px;
+}
+.iconify{
+    width: 20px;
+    height: 20px;
+    color:white;
+}
+.list-button button{
+    border-radius: 5px;
+    border: 2px solid rgba(225, 225, 225, 0.75);
+    font-size: 12px;
+    background: #FFFFFF40;
+    color: white;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+    text-align: left;
+    padding-left: 4px;
+}
+.top{
+    display: flex;
+}
+.table {
+    margin-top: 20px;
+    background: #FFFFFF40;
+    backdrop-filter: blur(4px);
+    border-radius: 5px;
+    color: white !important;
+}
+.form-control{
+    border-radius: 20px !important;
+}
+.form-select{
+    border-radius: 20px !important;
+}
+.rek-teks {
+    margin-left: 30px;
+    color: white;
+}
+.rek-teks h2{
+    font-size: 20px;
+}
+.rek-teks h3{
+    font-size: 14px;
+}
+.rek-photo {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.rek-profile {
+    width: 100%;
+    height: auto;
+}
