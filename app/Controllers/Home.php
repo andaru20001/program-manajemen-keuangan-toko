@@ -3,34 +3,78 @@
 namespace App\Controllers;
 
 use App\Models\TableModel;
+use CodeIgniter\Database\Query;
 
 class Home extends BaseController
 {
 	public function index(){
-		$tableModel = new TableModel();
-
-		// $tanggal = $tableModel->query('SELECT tgl_transaksi FROM transaksi;');
-		// $keterangan = $tableModel->query('SELECT keterangan_transaksi FROM transaksi;');
-		// $jumlah = $tableModel->query('SELECT jmlh_transaksi FROM transaksi;');
-		// $rekening = $tableModel->query('SELECT nama_rekening FROM transaksi INNER JOIN rekening USING(id_rekening);');
-		// $jenis = $tableModel->query('SELECT jenis_transaksi FROM transaksi;');
-
-		// $dataTabel = $tableModel->query("SELECT tgl_transaksi, keterangan_transaksi, jmlh_transaksi, nama_rekening, jenis_transaksi from transaksi INNER JOIN rekening using(id_rekening);");
-		// dd($dataTabel);
-
 		$db = \Config\Database::connect();
 		$dataTabel = $db->query("SELECT tgl_transaksi, keterangan_transaksi, jmlh_transaksi, nama_rekening, jenis_transaksi from transaksi INNER JOIN rekening using(id_rekening);");
-		
+		$rekening = $db->query("SELECT nama_rekening, saldo_rekening FROM rekening;");
+		$produk = $db->query("SELECT nama_produk FROM produk;");
+		$supplier = $db->query("SELECT nama_supplier FROM supplier;");
 
 		$data = [
-			// 'tgl' => $tanggal,
-			// 'ket' => $keterangan,
-			// 'jml' => $jumlah,
-			// 'rek' => $rekening,
-			// 'jns' => $jenis
-			'dataTabel' => $dataTabel
+			'dataTabel' => $dataTabel,
+			'rek' => $rekening,
+			'prod' => $produk,
+			'supl' => $supplier
 		];
 
 		return view('home', $data);
+	}
+
+	public function add_trans(){
+		$tgl = isset($_POST["tgl"]) ? $_POST["tgl"] : NULL;
+		$ket = isset($_POST["ket"]) ? $_POST["ket"] : NULL;
+		$rek = isset($_POST["rek"]) ? $_POST["rek"] : NULL;
+		$prd = isset($_POST["prd"]) ? $_POST["prd"] : NULL;
+		$spl = isset($_POST["spl"]) ? $_POST["spl"] : NULL;
+		$sbt = isset($_POST["sbt"]) ? $_POST["sbt"] : NULL;
+		$jns = isset($_POST["jns"]) ? $_POST["jns"] : NULL;
+
+		$db = \Config\Database::connect();
+		$db->query("INSERT INTO transaksi (tgl_transaksi, jmlh_transaksi, keterangan_transaksi, jenis_transaksi, id_produk, id_supplier, id_rekening) VALUES ('$tgl', '$sbt', '$ket', '$jns', (SELECT id_produk FROM produk WHERE nama_produk='$prd'), (SELECT id_supplier FROM supplier WHERE nama_supplier='$spl'), (SELECT id_rekening FROM rekening WHERE nama_rekening='$rek'));");
+
+		// INI BLOK KODE UPDATE SALDO REKENING, BISA DIPAKE DI FUNGSI EDIT DAN DELETE NANTI
+		$msk = $db->query("SELECT jmlh_transaksi FROM transaksi INNER JOIN rekening WHERE jenis_transaksi='Pemasukan' AND nama_rekening='$rek'");
+		$klr = $db->query("SELECT jmlh_transaksi FROM transaksi INNER JOIN rekening WHERE jenis_transaksi='Pengeluaran' AND nama_rekening='$rek'");
+		$pemasukan = 0;
+		$pengeluaran = 0;
+		foreach($msk->getResultArray() as $mskval){
+			$backup1 = $pemasukan;
+			$pemasukan = $backup1 + $mskval['jmlh_transaksi'];
+		}
+		foreach($klr->getResultArray() as $klrval){
+			$backup2 = $pengeluaran;
+			$pengeluaran = $backup2 + $klrval['jmlh_transaksi'];
+		}	
+		
+		$jml = $pemasukan - $pengeluaran;
+
+		$db->query("UPDATE rekening SET saldo_rekening='$jml' WHERE nama_rekening='$rek'");
+		// AKHIR DARI BLOK KODE UPDATE SALDO REKENING
+
+		return redirect()->to('/Home');
+	}
+
+	public function add_supl(){
+		$nama = isset($_POST["nama"]) ? $_POST["nama"] : NULL;
+
+		$db = \Config\Database::connect();
+		$db->query("INSERT INTO supplier (nama_supplier) VALUES ('$nama');");
+
+		return redirect()->to('/Home');
+	}
+
+	public function add_prod(){
+		$nama = isset($_POST["nama"]) ? $_POST["nama"] : NULL;
+		$harga = isset($_POST["harga"]) ? $_POST["harga"] : NULL;
+
+		$db = \Config\Database::connect();
+		$db->query("INSERT INTO produk (nama_produk) VALUES ('$nama');");
+		$db->query("INSERT INTO produk (harga_produk) VALUES ('$harga');");
+
+		return redirect()->to('/Home');
 	}
 }
