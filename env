@@ -52,9 +52,9 @@ app.baseURL = 'http://localhost:8080/'
 #--------------------------------------------------------------------
 
 database.default.hostname = localhost
-database.default.database = proyek_sisdat
+database.default.database = projeksisdat
 database.default.username = root
-database.default.password = 
+database.default.password = ovz8898ez1568
 database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
