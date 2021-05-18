@@ -20,7 +20,7 @@ CI_ENVIRONMENT = development
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = ''
+app.baseURL = 'http://localhost:8080/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -51,11 +51,11 @@ CI_ENVIRONMENT = development
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
-# database.default.DBDriver = MySQLi
+database.default.hostname = localhost
+database.default.database = proyek_sisdat
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
 
 # database.tests.hostname = localhost
 # database.tests.database = ci4
