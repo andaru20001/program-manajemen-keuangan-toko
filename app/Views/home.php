@@ -13,7 +13,7 @@
                 </div>
                 <div class="rek-teks">
                     <h2><?php echo $reken['nama_rekening']; ?></h2>
-                    <h3><?php echo $reken['saldo_rekening']; ?></h3>
+                    <h3><?php $convert = number_format($reken['saldo_rekening'], 2, '.', ','); echo "Rp. " . $convert ;?></h3>
                 </div>
             </div>
           <?php endforeach; ?>
@@ -52,7 +52,8 @@
                     <td><?php echo $dt['keterangan_transaksi'] ;?></td>
                     <td><?php echo $dt['nama_rekening'] ;?></td>
                     <td><?php echo $dt['jenis_transaksi'] ;?></td>
-                    <td><?php echo $dt['jmlh_transaksi'] ;?></td>
+                    <td><?php $convert = number_format($dt['jmlh_transaksi'], 2, '.', ','); echo "Rp. " . $convert ;?></td>
+                    <td><span class="iconify" data-icon="ant-design:edit-outlined" data-inline="false"></span> <span class="iconify" data-icon="fluent:delete-20-filled" data-inline="false"></span></td>
                   </tr>
                   <?php endforeach; ?>
                 </tbody>
