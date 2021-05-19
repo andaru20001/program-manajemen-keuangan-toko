@@ -14,6 +14,7 @@
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+app/config/Database.php
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
